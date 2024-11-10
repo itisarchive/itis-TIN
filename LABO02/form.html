@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Validated form</title>
+    <link href="style.css" rel="stylesheet">
+    <script defer src="validation.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Sign up for newsletter!</h1>
+    <form action="form.html" id="form" method="post" name="validated-form" onsubmit="return validateForm(event);">
+        <label for="name">Name:</label>
+        <input class="text-input" id="name" name="name" type="text">
+        <div class="validation-message" id="name-validation-message"></div>
+        <label for="email">Email:</label>
+        <input class="text-input" id="email" name="email" type="email">
+        <div class="validation-message" id="email-validation-message"></div>
+        <label for="password">Password:</label>
+        <input class="text-input" id="password" name="password" type="password">
+        <div class="validation-message" id="password-validation-message"></div>
+        <input id="submit" type="submit" value="Submit">
+    </form>
+    <div id="response"></div>
+</div>
+</body>
+</html>
