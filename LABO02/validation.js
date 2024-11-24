@@ -70,7 +70,6 @@ function validatePassword(password) {
     document.getElementById("password").setAttribute("class", "text-input");
     document.getElementById("password-validation-message").innerHTML = "";
     return true;
-
 }
 
 function displayResponse(email) {

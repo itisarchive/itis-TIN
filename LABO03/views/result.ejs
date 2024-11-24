@@ -2,14 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Form Submission Result</title>
+    <title>Form Submission Success</title>
+    <link href="style.css" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-    <h1>Thank you for signing up!</h1>
-    <p><strong>Name:</strong> <%= name %></p>
-    <p><strong>Email:</strong> <%= email %></p>
-    <p><strong>Password:</strong> <%= password %></p>
+<div class="response-container">
+    <div class="message-box">
+        <h1>Thank You!</h1>
+        <p>Thank you,
+            <span class="highlight"><%= name %></span>.
+            Your email address
+            <span class="highlight"><%= email %></span>
+            has been successfully added to our mailing list! Your subscription will be running until
+            <span class="highlight"><%= dateUntil %></span>
+        </p>
+    </div>
 </div>
 </body>
 </html>

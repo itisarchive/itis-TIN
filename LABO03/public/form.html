@@ -11,13 +11,12 @@
     <form action="/submit-form" id="form" method="post" name="validated-form">
         <label for="name">Name:</label>
         <input class="text-input" id="name" name="name" type="text">
-        <div class="validation-message" id="name-validation-message"></div>
         <label for="email">Email:</label>
         <input class="text-input" id="email" name="email" type="email">
-        <div class="validation-message" id="email-validation-message"></div>
+        <label for="duration">Duration in days:</label>
+        <input class="text-input" id="duration" name="duration" type="number">
         <label for="password">Password:</label>
         <input class="text-input" id="password" name="password" type="password">
-        <div class="validation-message" id="password-validation-message"></div>
         <input id="submit" type="submit" value="Submit">
     </form>
     <div id="response"></div>

@@ -17,6 +17,8 @@ body {
     max-width: 320px;
     padding: 20px;
     box-sizing: border-box;
+    justify-content: center;
+    height: 100vh;
 }
 
 h1 {
@@ -93,4 +95,42 @@ label {
     font-size: 14px;
     text-align: center;
     width: 100%;
+}
+
+p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.result-value {
+    color: #4a90e2;
+    font-weight: bold;
+}
+
+.message-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 500px;
+    margin: auto;
+}
+
+.message-box h1 {
+    color: #4a90e2;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.message-box p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    color: #4a90e2;
+    font-weight: bold;
 }
