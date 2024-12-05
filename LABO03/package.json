@@ -6,15 +6,21 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.3",
+    "cookie-parser": "^1.4.7",
+    "date-fns": "^4.1.0",
+    "debug": "^4.3.7",
     "ejs": "^3.1.10",
     "express": "^4.21.1",
-    "express.js": "^1.0.0",
-    "bcrypt": "^5.1.1",
-    "cookie-parser": "^1.4.7",
-    "debug": "^4.3.7",
+    "helmet": "^8.0.0",
     "http-errors": "^2.0.0",
-    "morgan": "^1.10.0",
-    "sqlite3": "^5.1.7"
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.16.0",
+    "@stylistic/eslint-plugin": "^2.11.0",
+    "eslint": "^9.16.0",
+    "globals": "^15.13.0"
   }
 }
