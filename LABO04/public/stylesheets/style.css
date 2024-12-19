@@ -1,34 +1,26 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
-    color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     margin: 0;
 }
 
-.container {
+.middle-strip {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    max-width: 320px;
-    padding: 20px;
-    box-sizing: border-box;
     justify-content: center;
+    width: 100%;
+    max-width: 33.33%;
     height: 100vh;
+    box-sizing: border-box;
+    padding: 20px;
+
 }
 
-h1 {
-    color: #4a90e2;
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-form {
+.card {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -36,18 +28,40 @@ form {
     width: 100%;
 }
 
-label {
+.card-title {
+    color: #4a90e2;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.card-text {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.card-text-accent {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #4a90e2;
+    font-weight: bold;
+}
+
+.form-label {
     display: block;
-    margin: 10px 0 5px;
+    margin: 10px 3px 5px;
     font-weight: bold;
     font-size: 14px;
 }
 
-.validation-message {
-    display: block;
-    margin: 5px 0 10px;
-    font-size: 12px;
-    color: red;
+.form-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
 }
 
 .invalid {
@@ -59,13 +73,11 @@ label {
     font-size: 14px;
 }
 
-.text-input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 14px;
+.validation-message {
+    display: block;
+    margin: 5px 5px 10px;
+    font-size: 12px;
+    color: red;
 }
 
 #submit {
@@ -85,6 +97,22 @@ label {
     background-color: #357abd;
 }
 
+.sticky-bottom {
+    position: fixed;
+    bottom: 0;
+    max-width: fit-content;
+    right: 0;
+    border-radius: 4px 0 0 0;
+}
+
+.no-display {
+    display: none;
+}
+
+.no-visibility {
+    visibility: hidden;
+}
+
 .response {
     margin-top: 15px;
     padding: 15px;
@@ -93,44 +121,7 @@ label {
     border-left: 5px solid #4a90e2;
     border-radius: 5px;
     font-size: 14px;
-    text-align: center;
+    text-align: left;
     width: 100%;
-}
-
-p {
-    margin: 10px 0;
-    font-size: 14px;
-    color: #333;
-}
-
-.result-value {
-    color: #4a90e2;
-    font-weight: bold;
-}
-
-.message-box {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 500px;
-    margin: auto;
-}
-
-.message-box h1 {
-    color: #4a90e2;
-    margin-bottom: 15px;
-    font-size: 24px;
-}
-
-.message-box p {
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.highlight {
-    color: #4a90e2;
-    font-weight: bold;
+    box-sizing: border-box;
 }

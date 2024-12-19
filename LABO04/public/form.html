@@ -2,24 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Validated form</title>
+    <title>Zamów kuriera</title>
     <link href="/stylesheets/style.css" rel="stylesheet">
+    <script src="/javascripts/form.js"></script>
 </head>
 <body>
-<div class="container">
-    <h1>Sign up for newsletter!</h1>
-    <form action="/submit-form" id="form" method="post" name="validated-form">
-        <label for="name">Name:</label>
-        <input class="text-input" id="name" name="name" type="text">
-        <label for="email">Email:</label>
-        <input class="text-input" id="email" name="email" type="email">
-        <label for="duration">Duration in days:</label>
-        <input class="text-input" id="duration" name="duration" type="number">
-        <label for="password">Password:</label>
-        <input class="text-input" id="password" name="password" type="password">
-        <input id="submit" type="submit" value="Submit">
-    </form>
-    <div id="response"></div>
+<div class="middle-strip">
+    <div class="card">
+        <form>
+            <h1 class="card-title">Zamów kuriera</h1>
+            <p class="card-text">Wypełnij poniższy formularz, a nasz kurier przyjedzie odebrać Twoją przesyłkę.</p>
+            <hr>
+            <label class="form-label" for="address-input"><b>Adres odbioru</b></label>
+            <input class="form-input" id="address-input" name="address" placeholder="Wprowadź adres" required
+                   type="text">
+            <div class="validation-message no-display" id="address-validation-message"></div>
+            <label class="form-label" for="weight-input"><b>Waga przesyłki</b></label>
+            <input class="form-input" id="weight-input" name="weight" placeholder="Wprowadź wagę">
+            <div class="validation-message no-display" id="weight-validation-message"></div>
+            <label class="form-label" for="arrival-time-input"><b>Data i godzina odbioru</b></label>
+            <input class="form-input" id="arrival-time-input" name="arrival-time" type="datetime-local">
+            <div class="validation-message no-display" id="arrival-time-validation-message"></div>
+            <input id="submit" name="submit" type="button" value="Zamów">
+        </form>
+        <div class="response no-display" id="response">
+            <p class="card-text">
+                Twoje zamówienie zostało złożone!
+            </p>
+            <p>Adres: <span class="card-text" id="address-response">adres</span></p>
+            <p>Waga przesyłki: <span class="card-text" id="weight-response">waga</span></p>
+            <p>Czas przyjazdu kuriera: <span class="card-text" id="arrival-time-response">czas</span></p>
+            <p>Pozostały czas oczekiwania: <span class="card-text" id="waiting-time-response">czas</span></p>
+        </div>
+    </div>
+</div>
+<div class="card sticky-bottom">
+    <p class="card-text">W tym momencie do twojej dyspozycji jest <span class="card-text-accent"
+                                                                        id="available-couriers">8</span> kurierów.</p>
 </div>
 </body>
 </html>

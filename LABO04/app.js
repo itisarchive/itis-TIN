@@ -1,32 +1,42 @@
 "use strict";
 
-const helmet = require("helmet");
 const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const sqlite3 = require("sqlite3").verbose();
+const sqlite = require("sqlite");
 
-const formValidator = require("./middlewares/formValidator");
-const formRouter = require("./routes/form");
+// const formValidator = require("./middlewares/formValidator");
+const couriersRouter = require("./routes/couriers");
 const faviconRouter = require("./routes/favicon");
 
 const app = express();
 
+(async () => {
+    try {
+        module.exports.db = await sqlite.open({ filename: "./couriers.db", driver: sqlite3.Database });
+    }
+    catch (error) {
+        console.error("Failed to initialize the database", error);
+        process.exit(1);
+    }
+})();
+
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
-app.use(helmet());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use(formValidator);
+// app.use(formValidator);
 
-app.use("/", formRouter);
-app.use("/", faviconRouter);
+app.use("/couriers", couriersRouter);
+app.use("*", faviconRouter);
 
 app.use((req, res, next) => {
     next(createError(404));
