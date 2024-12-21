@@ -125,3 +125,36 @@ body {
     width: 100%;
     box-sizing: border-box;
 }
+
+#snackbar {
+    visibility: hidden;
+    width: 400px;
+    text-align: left;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    bottom: 30px;
+    background-color: #ffe6e6;
+    color: #8f3131;
+    border-left: 5px solid #e24a4a;
+}
+
+#snackbar.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+#snackbar-status {
+    font-weight: bold;
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}

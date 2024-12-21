@@ -22,8 +22,8 @@ async function getAvailableCouriers() {
             await getAvailableCouriers();
         }, 15000);
     }
-    catch (error) {
-        console.error(error);
+    catch {
+        displayError("połączenia", "Połączenie z serwerem zostało przerwane.");
     }
 }
 
@@ -52,15 +52,31 @@ async function processForm() {
     );
     try {
         const response = await fetch(request);
+        if (response.status >= 400) {
+            displayError(response.status, "Twoje zamówienie nie mogło zostać obsłużone.");
+            return;
+        }
         const responseBody = await response.json();
         displayResponse(responseBody);
         setTimeout(async function () {
             await updateWaitingTime(responseBody.courierId);
         }, 15000);
     }
-    catch (error) {
-        console.error(error);
+    catch {
+        displayError("połączenia", "Połączenie z serwerem zostało przerwane.");
     }
+}
+
+function displayError(status, message) {
+    const snackbar = document.getElementById("snackbar");
+    const snackbarContent = document.getElementById("snackbar-content");
+    const snackbarStatus = document.getElementById("snackbar-status");
+    snackbarContent.innerHTML = message;
+    snackbarStatus.innerHTML = `Błąd ${status}`;
+    snackbar.className = "show";
+    setTimeout(function () {
+        snackbar.className = snackbar.className.replace("show", "");
+    }, 3000);
 }
 
 async function updateWaitingTime(courierId) {
@@ -85,8 +101,8 @@ async function updateWaitingTime(courierId) {
             await updateWaitingTime(courierId);
         }, 15000);
     }
-    catch (error) {
-        console.error(error);
+    catch {
+        displayError("połączenia", "Połączenie z serwerem zostało przerwane.");
     }
 }
 

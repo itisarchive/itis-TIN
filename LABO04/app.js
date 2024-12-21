@@ -8,7 +8,7 @@ const logger = require("morgan");
 const sqlite3 = require("sqlite3").verbose();
 const sqlite = require("sqlite");
 
-// const formValidator = require("./middlewares/formValidator");
+const formValidator = require("./middlewares/formValidator");
 const couriersRouter = require("./routes/couriers");
 const faviconRouter = require("./routes/favicon");
 
@@ -33,10 +33,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-// app.use(formValidator);
-
+app.use("/", faviconRouter);
+app.use("/couriers/add", formValidator);
 app.use("/couriers", couriersRouter);
-app.use("*", faviconRouter);
 
 app.use((req, res, next) => {
     next(createError(404));

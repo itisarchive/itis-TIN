@@ -1,38 +1,31 @@
 module.exports = function (req, res, next) {
-    const { name, email, duration, password } = req.body;
-    const invalidFields = [];
-
-    if (!isNameValid(name)) invalidFields.push("name");
-    if (!isEmailValid(email)) invalidFields.push("email");
-    if (!isDurationValid(duration)) invalidFields.push("duration");
-    if (!isPasswordValid(password)) invalidFields.push("password");
-
-    if (invalidFields.length > 0) req.invalidFields = invalidFields;
-
+    if (!isRequestValid(req)) {
+        return res.status(400).send();
+    }
     next();
 };
 
-function isNameValid(name) {
-    if (!name) return false;
-    return typeof name === "string" && name.trim().length > 0;
+function isRequestValid(request) {
+    const isAddressValid = validateAddress(request.body.address);
+    const isWeightValid = validateWeight(request.body.weight);
+    const isArrivalTimeValid = validateArrivalTime(request.body.arrivalTime);
+    let isRequestValid = true;
+    isRequestValid &&= isAddressValid;
+    isRequestValid &&= isWeightValid;
+    isRequestValid &&= isArrivalTimeValid;
+    return isRequestValid;
 }
 
-function isEmailValid(email) {
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    return emailRegex.test(email);
+function validateAddress(address) {
+    return address !== "";
 }
 
-function isDurationValid(duration) {
-    const parsed = parseInt(duration, 10);
-    return !isNaN(parsed) && parsed > 0;
+function validateWeight(weight) {
+    const numeric = Number(weight);
+    return !(numeric === Infinity || String(numeric) !== weight || numeric <= 0);
 }
 
-function isPasswordValid(password) {
-    return (
-        typeof password === "string"
-        && password.length >= 8
-        && /[a-z]/.test(password)
-        && /[A-Z]/.test(password)
-        && /[0-9]/.test(password)
-    );
+function validateArrivalTime(date) {
+    const parsedDate = new Date(date);
+    return parsedDate > Date.now();
 }
