@@ -173,7 +173,7 @@ function validateWeight(weight) {
 
 function validateArrivalTime(date) {
     const parsedDate = new Date(date);
-    if (parsedDate <= Date.now()) {
+    if (parsedDate <= Date.now() || isNaN(parsedDate)) {
         document.getElementById("arrival-time-input").classList.remove("form-input");
         document.getElementById("arrival-time-input").classList.add("invalid");
         document.getElementById("arrival-time-validation-message").classList.remove("no-display");
